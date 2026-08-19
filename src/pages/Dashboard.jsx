@@ -22,83 +22,205 @@ function Dashboard() {
           ) / totalModels
         ).toFixed(2)
 
+  const recentModels = [...models]
+    .reverse()
+    .slice(0, 3)
+
   return (
-    <div className="container py-5">
+    <main className="dashboard-page">
 
-      <div className="mb-5">
-        <h1 className="fw-bold">
-          AI Model Manager
-        </h1>
+      {/* Hero */}
+      <section className="dashboard-hero">
+        <div>
+          <span className="dashboard-eyebrow">
+            MACHINE LEARNING WORKSPACE
+          </span>
 
-        <p className="text-muted">
-          Manage and track your artificial intelligence models.
-        </p>
-      </div>
+          <h1>
+            AI Model
+            <span> Manager</span>
+          </h1>
 
-      <div className="row g-4">
+          <p>
+            Track, organize and manage your machine
+            learning models from one place.
+          </p>
+        </div>
 
-        <div className="col-md-4">
-          <div className="card border-0 shadow-sm h-100">
-            <div className="card-body p-4">
-              <p className="text-muted mb-2">
-                Total Models
-              </p>
+        <div className="hero-icon">
+          <span>AI</span>
+        </div>
+      </section>
 
-              <h2 className="fw-bold mb-0">
-                {totalModels}
-              </h2>
-            </div>
+      {/* Statistics */}
+      <section className="stats-grid">
+
+        <div className="stat-card">
+          <div className="stat-icon blue">
+            ◈
+          </div>
+
+          <div>
+            <span>Total Models</span>
+            <strong>{totalModels}</strong>
           </div>
         </div>
 
-        <div className="col-md-4">
-          <div className="card border-0 shadow-sm h-100">
-            <div className="card-body p-4">
-              <p className="text-muted mb-2">
-                Completed Models
-              </p>
+        <div className="stat-card">
+          <div className="stat-icon green">
+            ✓
+          </div>
 
-              <h2 className="fw-bold text-success mb-0">
-                {completedModels}
-              </h2>
-            </div>
+          <div>
+            <span>Completed</span>
+            <strong>{completedModels}</strong>
           </div>
         </div>
 
-        <div className="col-md-4">
-          <div className="card border-0 shadow-sm h-100">
-            <div className="card-body p-4">
-              <p className="text-muted mb-2">
-                Average Accuracy
-              </p>
+        <div className="stat-card">
+          <div className="stat-icon purple">
+            %
+          </div>
 
-              <h2 className="fw-bold text-primary mb-0">
-                %{averageAccuracy}
-              </h2>
-            </div>
+          <div>
+            <span>Average Accuracy</span>
+            <strong>{averageAccuracy}%</strong>
           </div>
         </div>
 
-      </div>
+      </section>
 
-      <div className="mt-5">
-        <h3 className="fw-bold mb-3">
-          About the Project
-        </h3>
+      {/* Recent Models */}
+      <section className="recent-section">
 
-        <div className="card border-0 shadow-sm">
-          <div className="card-body p-4">
-            <p className="mb-0">
-              AI Model Manager is a frontend application
-              developed with React and Bootstrap. It allows
-              users to add, view, update and delete AI model
-              information using browser LocalStorage.
+        <div className="section-heading">
+          <div>
+            <h2>Recent Models</h2>
+            <p>
+              Your latest machine learning models
             </p>
           </div>
-        </div>
-      </div>
 
-    </div>
+          <span className="model-count">
+            {models.length} models
+          </span>
+        </div>
+
+        {recentModels.length === 0 ? (
+          <div className="empty-state">
+            <div className="empty-icon">
+              +
+            </div>
+
+            <h3>No models yet</h3>
+
+            <p>
+              Add your first AI model to start
+              managing your experiments.
+            </p>
+          </div>
+        ) : (
+          <div className="recent-models">
+
+            {recentModels.map((model) => (
+              <div
+                className="recent-model"
+                key={model.id}
+              >
+
+                <div className="model-main">
+                  <div className="model-avatar">
+                    {model.name
+                      ?.charAt(0)
+                      .toUpperCase()}
+                  </div>
+
+                  <div>
+                    <h3>{model.name}</h3>
+
+                    <p>
+                      {model.dataset}
+                      <span>•</span>
+                      {model.framework}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="model-metrics">
+
+                  <div>
+                    <span>Accuracy</span>
+                    <strong>
+                      {model.accuracy}%
+                    </strong>
+                  </div>
+
+                  <div>
+                    <span>F1 Score</span>
+                    <strong>
+                      {model.f1Score}
+                    </strong>
+                  </div>
+
+                  <div>
+                    <span>Epochs</span>
+                    <strong>
+                      {model.epochs}
+                    </strong>
+                  </div>
+
+                </div>
+
+                <span
+                  className={`status-badge ${
+                    model.status
+                      ?.toLowerCase()
+                      .replace(' ', '-')
+                  }`}
+                >
+                  <span className="status-dot"></span>
+                  {model.status}
+                </span>
+
+              </div>
+            ))}
+
+          </div>
+        )}
+
+      </section>
+
+      {/* About */}
+      <section className="about-section">
+
+        <div className="about-content">
+          <span className="about-label">
+            ABOUT THE PROJECT
+          </span>
+
+          <h2>
+            One workspace for
+            <span> your AI models.</span>
+          </h2>
+
+          <p>
+            AI Model Manager is a React-based
+            application designed to organize and
+            track machine learning experiments.
+            Model information is stored locally
+            in your browser using LocalStorage.
+          </p>
+        </div>
+
+        <div className="about-tech">
+          <span>REACT</span>
+          <span>BOOTSTRAP</span>
+          <span>LOCALSTORAGE</span>
+        </div>
+
+      </section>
+
+    </main>
   )
 }
 

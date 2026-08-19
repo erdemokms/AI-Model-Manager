@@ -1,109 +1,122 @@
 function ModelCard({ model, onDelete, onEdit }) {
+  const statusClass = model.status
+    ?.toLowerCase()
+    .replace(' ', '-')
+
   return (
-    <div className="col-md-6 col-lg-4 mb-4">
-      <div className="card border-0 shadow-sm h-100">
+    <article className="model-card">
 
-        <div className="card-body p-4">
+      {/* Header */}
+      <div className="model-card-header">
 
-          {/* Model başlığı */}
-          <div className="d-flex justify-content-between align-items-start mb-4">
-            <div>
-              <h4 className="card-title fw-bold mb-1">
-                {model.name}
-              </h4>
+        <div className="model-card-title">
 
-              <small className="text-muted">
-                {model.framework}
-              </small>
-            </div>
-
-            <span className="badge bg-success">
-              {model.status}
-            </span>
+          <div className="model-avatar">
+            {model.name
+              ?.charAt(0)
+              .toUpperCase()}
           </div>
 
-          {/* Dataset */}
-          <div className="mb-4">
-            <small className="text-muted d-block">
-              Dataset
-            </small>
+          <div>
+            <h2>{model.name}</h2>
 
-            <span className="fw-semibold">
-              {model.dataset}
-            </span>
-          </div>
-
-          {/* Metrics */}
-          <div className="row text-center mb-4">
-
-            <div className="col-6">
-              <div className="border rounded p-3">
-                <small className="text-muted d-block">
-                  Accuracy
-                </small>
-
-                <h4 className="text-primary fw-bold mb-0">
-                  %{model.accuracy}
-                </h4>
-              </div>
-            </div>
-
-            <div className="col-6">
-              <div className="border rounded p-3">
-                <small className="text-muted d-block">
-                  F1 Score
-                </small>
-
-                <h4 className="text-success fw-bold mb-0">
-                  {model.f1Score}
-                </h4>
-              </div>
-            </div>
-
-          </div>
-
-          {/* Epoch */}
-          <div className="mb-4">
-            <small className="text-muted">
-              Training Epochs
-            </small>
-
-            <div className="fw-semibold">
-              {model.epochs}
-            </div>
-          </div>
-
-          {/* Buttons */}
-          <div className="d-flex gap-2">
-
-            <button
-              className="btn btn-warning flex-grow-1"
-              onClick={() => onEdit(model)}
-            >
-              Edit
-            </button>
-
-            <button
-              className="btn btn-danger flex-grow-1"
-              onClick={() => {
-                const confirmed = window.confirm(
-                `Are you sure you want to delete ${model.name}?`
-                )
-
-                if (confirmed) {
-                 onDelete(model.id)
-                 }
-                }}
-            >
-              Delete
-            </button>
-
+            <p>
+              {model.framework}
+            </p>
           </div>
 
         </div>
 
+        <span
+          className={`status-badge ${statusClass}`}
+        >
+          <span className="status-dot"></span>
+          {model.status}
+        </span>
+
       </div>
-    </div>
+
+      {/* Dataset */}
+      <div className="model-dataset">
+
+        <span>DATASET</span>
+
+        <strong>
+          {model.dataset}
+        </strong>
+
+      </div>
+
+      {/* Metrics */}
+      <div className="model-card-metrics">
+
+        <div className="model-card-metric">
+
+          <span>Accuracy</span>
+
+          <strong className="metric-primary">
+            {model.accuracy}%
+          </strong>
+
+        </div>
+
+        <div className="model-card-metric">
+
+          <span>F1 Score</span>
+
+          <strong>
+            {model.f1Score}
+          </strong>
+
+        </div>
+
+        <div className="model-card-metric">
+
+          <span>Epochs</span>
+
+          <strong>
+            {model.epochs}
+          </strong>
+
+        </div>
+
+      </div>
+
+      {/* Description */}
+      {model.description && (
+        <div className="model-description">
+          {model.description}
+        </div>
+      )}
+
+      {/* Actions */}
+      <div className="model-card-actions">
+
+        <button
+          className="model-edit-button"
+          onClick={() => onEdit(model)}
+        >
+          Edit
+        </button>
+
+        <button
+          className="model-delete-button"
+          onClick={() => {
+            const confirmed = window.confirm(
+              `Are you sure you want to delete ${model.name}?`
+            )
+
+            if (confirmed) {
+              onDelete(model.id)
+            }
+          }}
+        >
+          Delete
+        </button>
+
+      </div>
+
+    </article>
   )
 }
 

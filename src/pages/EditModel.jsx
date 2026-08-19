@@ -19,183 +19,278 @@ function EditModel({ model, onUpdate, onCancel }) {
   }
 
   return (
-    <div className="container py-5">
+    <main className="form-page">
 
-      <div className="row justify-content-center">
-        <div className="col-lg-8">
+      <section className="form-header">
+        <div>
+          <span className="page-eyebrow">
+            MODEL WORKSPACE
+          </span>
 
-          <div className="mb-4">
-            <h1 className="fw-bold">
-              Edit AI Model
-            </h1>
+          <h1>Edit AI Model</h1>
 
-            <p className="text-muted">
-              Update the information of your AI model.
-            </p>
-          </div>
+          <p>
+            Update the information and performance
+            metrics of your machine learning model.
+          </p>
+        </div>
 
-          <div className="card border-0 shadow-sm">
-            <div className="card-body p-4 p-md-5">
+        <div className="form-header-icon">
+          ✎
+        </div>
+      </section>
 
-              <form onSubmit={handleSubmit}>
+      <form
+        className="model-form"
+        onSubmit={handleSubmit}
+      >
 
-                <div className="mb-4">
-                  <label className="form-label fw-semibold">
-                    Model Name
-                  </label>
+        {/* Model Information */}
 
-                  <input
-                    type="text"
-                    className="form-control form-control-lg"
-                    name="name"
-                    value={updatedModel.name}
-                    onChange={handleChange}
-                  />
-                </div>
+        <section className="form-section">
 
-                <div className="mb-4">
-                  <label className="form-label fw-semibold">
-                    Dataset
-                  </label>
+          <div className="form-section-heading">
+            <div className="form-section-number">
+              01
+            </div>
 
-                  <input
-                    type="text"
-                    className="form-control"
-                    name="dataset"
-                    value={updatedModel.dataset}
-                    onChange={handleChange}
-                  />
-                </div>
-
-                <div className="mb-4">
-                  <label className="form-label fw-semibold">
-                    Framework
-                  </label>
-
-                  <select
-                    className="form-select"
-                    name="framework"
-                    value={updatedModel.framework}
-                    onChange={handleChange}
-                  >
-                    <option value="PyTorch">PyTorch</option>
-                    <option value="TensorFlow">TensorFlow</option>
-                    <option value="Keras">Keras</option>
-                    <option value="Scikit-learn">
-                      Scikit-learn
-                    </option>
-                  </select>
-                </div>
-
-                <div className="row">
-
-                  <div className="col-md-4 mb-4">
-                    <label className="form-label fw-semibold">
-                      Accuracy (%)
-                    </label>
-
-                    <input
-                      type="number"
-                      step="0.01"
-                      className="form-control"
-                      name="accuracy"
-                      value={updatedModel.accuracy}
-                      onChange={handleChange}
-                    />
-                  </div>
-
-                  <div className="col-md-4 mb-4">
-                    <label className="form-label fw-semibold">
-                      F1 Score
-                    </label>
-
-                    <input
-                      type="number"
-                      step="0.0001"
-                      className="form-control"
-                      name="f1Score"
-                      value={updatedModel.f1Score}
-                      onChange={handleChange}
-                    />
-                  </div>
-
-                  <div className="col-md-4 mb-4">
-                    <label className="form-label fw-semibold">
-                      Epochs
-                    </label>
-
-                    <input
-                      type="number"
-                      className="form-control"
-                      name="epochs"
-                      value={updatedModel.epochs}
-                      onChange={handleChange}
-                    />
-                  </div>
-
-                </div>
-
-                <div className="mb-4">
-                  <label className="form-label fw-semibold">
-                    Status
-                  </label>
-
-                  <select
-                    className="form-select"
-                    name="status"
-                    value={updatedModel.status}
-                    onChange={handleChange}
-                  >
-                    <option value="Completed">Completed</option>
-                    <option value="In Progress">
-                      In Progress
-                    </option>
-                    <option value="Planned">Planned</option>
-                  </select>
-                </div>
-
-                <div className="mb-4">
-                  <label className="form-label fw-semibold">
-                    Description
-                  </label>
-
-                  <textarea
-                    className="form-control"
-                    rows="4"
-                    name="description"
-                    value={updatedModel.description}
-                    onChange={handleChange}
-                  />
-                </div>
-
-                <div className="d-flex gap-2">
-
-                  <button
-                    type="submit"
-                    className="btn btn-primary btn-lg flex-grow-1"
-                  >
-                    Update Model
-                  </button>
-
-                  <button
-                    type="button"
-                    className="btn btn-secondary btn-lg"
-                    onClick={onCancel}
-                  >
-                    Cancel
-                  </button>
-
-                </div>
-
-              </form>
-
+            <div>
+              <h2>Model Information</h2>
+              <p>
+                Basic information about your model.
+              </p>
             </div>
           </div>
 
-        </div>
-      </div>
+          <div className="form-grid">
 
-    </div>
+            <div className="form-field form-field-wide">
+              <label>
+                Model Name
+                <span>*</span>
+              </label>
+
+              <input
+                type="text"
+                name="name"
+                value={updatedModel.name}
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className="form-field">
+              <label>
+                Dataset
+                <span>*</span>
+              </label>
+
+              <input
+                type="text"
+                name="dataset"
+                value={updatedModel.dataset}
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className="form-field">
+              <label>
+                Framework
+                <span>*</span>
+              </label>
+
+              <select
+                name="framework"
+                value={updatedModel.framework}
+                onChange={handleChange}
+              >
+                <option value="PyTorch">
+                  PyTorch
+                </option>
+
+                <option value="TensorFlow">
+                  TensorFlow
+                </option>
+
+                <option value="Keras">
+                  Keras
+                </option>
+
+                <option value="Scikit-learn">
+                  Scikit-learn
+                </option>
+              </select>
+            </div>
+
+          </div>
+
+        </section>
+
+        {/* Performance Metrics */}
+
+        <section className="form-section">
+
+          <div className="form-section-heading">
+            <div className="form-section-number">
+              02
+            </div>
+
+            <div>
+              <h2>Performance Metrics</h2>
+              <p>
+                Update the model's training performance.
+              </p>
+            </div>
+          </div>
+
+          <div className="metric-form-grid">
+
+            <div className="metric-field">
+              <label>
+                Accuracy
+                <span>*</span>
+              </label>
+
+              <div className="metric-input">
+                <input
+                  type="number"
+                  step="0.01"
+                  name="accuracy"
+                  value={updatedModel.accuracy}
+                  onChange={handleChange}
+                />
+
+                <span>%</span>
+              </div>
+            </div>
+
+            <div className="metric-field">
+              <label>
+                F1 Score
+                <span>*</span>
+              </label>
+
+              <input
+                type="number"
+                step="0.0001"
+                name="f1Score"
+                value={updatedModel.f1Score}
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className="metric-field">
+              <label>
+                Epochs
+                <span>*</span>
+              </label>
+
+              <input
+                type="number"
+                name="epochs"
+                value={updatedModel.epochs}
+                onChange={handleChange}
+              />
+            </div>
+
+          </div>
+
+        </section>
+
+        {/* Additional Information */}
+
+        <section className="form-section">
+
+          <div className="form-section-heading">
+            <div className="form-section-number">
+              03
+            </div>
+
+            <div>
+              <h2>Additional Information</h2>
+              <p>
+                Update status and additional notes.
+              </p>
+            </div>
+          </div>
+
+          <div className="form-grid">
+
+            <div className="form-field">
+              <label>
+                Status
+                <span>*</span>
+              </label>
+
+              <select
+                name="status"
+                value={updatedModel.status}
+                onChange={handleChange}
+              >
+                <option value="Completed">
+                  Completed
+                </option>
+
+                <option value="In Progress">
+                  In Progress
+                </option>
+
+                <option value="Planned">
+                  Planned
+                </option>
+              </select>
+            </div>
+
+            <div className="form-field form-field-wide">
+              <label>
+                Description
+              </label>
+
+              <textarea
+                name="description"
+                value={updatedModel.description || ''}
+                onChange={handleChange}
+                rows="4"
+                placeholder="Add notes about the model..."
+              />
+            </div>
+
+          </div>
+
+        </section>
+
+        {/* Actions */}
+
+        <div className="form-actions">
+
+          <p>
+            <span>*</span> Required fields
+          </p>
+
+          <div className="edit-form-buttons">
+
+            <button
+              type="button"
+              className="secondary-form-button"
+              onClick={onCancel}
+            >
+              Cancel
+            </button>
+
+            <button
+              type="submit"
+              className="primary-form-button"
+            >
+              <span>✓</span>
+              Update Model
+            </button>
+
+          </div>
+
+        </div>
+
+      </form>
+
+    </main>
   )
 }
 

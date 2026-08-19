@@ -70,209 +70,279 @@ function AddModel() {
   }
 
   return (
-    <div className="container py-5">
+    <main className="form-page">
 
-      <div className="row justify-content-center">
-        <div className="col-lg-8">
+      <section className="form-header">
+        <div>
+          <span className="page-eyebrow">
+            MODEL WORKSPACE
+          </span>
 
-          <div className="mb-4">
-            <h1 className="fw-bold">
-              Add AI Model
-            </h1>
+          <h1>Add AI Model</h1>
 
-            <p className="text-muted">
-              Add a new artificial intelligence model to your manager.
-            </p>
-          </div>
+          <p>
+            Register a new machine learning model
+            and keep its performance metrics organized.
+          </p>
+        </div>
 
-          <div className="card border-0 shadow-sm">
-            <div className="card-body p-4 p-md-5">
+        <div className="form-header-icon">
+          +
+        </div>
+      </section>
 
-              <form onSubmit={handleSubmit}>
+      <form
+        className="model-form"
+        onSubmit={handleSubmit}
+      >
 
-                {/* Model Name */}
-                <div className="mb-4">
-                  <label className="form-label fw-semibold">
-                    Model Name
-                  </label>
+        {/* Model Information */}
 
-                  <input
-                    type="text"
-                    className="form-control form-control-lg"
-                    name="name"
-                    value={model.name}
-                    onChange={handleChange}
-                    placeholder="e.g. ResNet50"
-                  />
-                </div>
+        <section className="form-section">
 
-                {/* Dataset */}
-                <div className="mb-4">
-                  <label className="form-label fw-semibold">
-                    Dataset
-                  </label>
+          <div className="form-section-heading">
+            <div className="form-section-number">
+              01
+            </div>
 
-                  <input
-                    type="text"
-                    className="form-control"
-                    name="dataset"
-                    value={model.dataset}
-                    onChange={handleChange}
-                    placeholder="e.g. HAM10000"
-                  />
-                </div>
-
-                {/* Framework */}
-                <div className="mb-4">
-                  <label className="form-label fw-semibold">
-                    Framework
-                  </label>
-
-                  <select
-                    className="form-select"
-                    name="framework"
-                    value={model.framework}
-                    onChange={handleChange}
-                  >
-                    <option value="">
-                      Select Framework
-                    </option>
-
-                    <option value="PyTorch">
-                      PyTorch
-                    </option>
-
-                    <option value="TensorFlow">
-                      TensorFlow
-                    </option>
-
-                    <option value="Keras">
-                      Keras
-                    </option>
-
-                    <option value="Scikit-learn">
-                      Scikit-learn
-                    </option>
-                  </select>
-                </div>
-
-                {/* Metrics */}
-                <div className="row">
-
-                  <div className="col-md-4 mb-4">
-                    <label className="form-label fw-semibold">
-                      Accuracy (%)
-                    </label>
-
-                    <input
-                      type="number"
-                      step="0.01"
-                      className="form-control"
-                      name="accuracy"
-                      value={model.accuracy}
-                      onChange={handleChange}
-                      placeholder="88.72"
-                    />
-                  </div>
-
-                  <div className="col-md-4 mb-4">
-                    <label className="form-label fw-semibold">
-                      F1 Score
-                    </label>
-
-                    <input
-                      type="number"
-                      step="0.0001"
-                      className="form-control"
-                      name="f1Score"
-                      value={model.f1Score}
-                      onChange={handleChange}
-                      placeholder="0.8845"
-                    />
-                  </div>
-
-                  <div className="col-md-4 mb-4">
-                    <label className="form-label fw-semibold">
-                      Epochs
-                    </label>
-
-                    <input
-                      type="number"
-                      className="form-control"
-                      name="epochs"
-                      value={model.epochs}
-                      onChange={handleChange}
-                      placeholder="30"
-                    />
-                  </div>
-
-                </div>
-
-                {/* Status */}
-                <div className="mb-4">
-                  <label className="form-label fw-semibold">
-                    Status
-                  </label>
-
-                  <select
-                    className="form-select"
-                    name="status"
-                    value={model.status}
-                    onChange={handleChange}
-                  >
-                    <option value="">
-                      Select Status
-                    </option>
-
-                    <option value="Completed">
-                      Completed
-                    </option>
-
-                    <option value="In Progress">
-                      In Progress
-                    </option>
-
-                    <option value="Planned">
-                      Planned
-                    </option>
-                  </select>
-                </div>
-
-                {/* Description */}
-                <div className="mb-4">
-                  <label className="form-label fw-semibold">
-                    Description
-                  </label>
-
-                  <textarea
-                    className="form-control"
-                    rows="4"
-                    name="description"
-                    value={model.description}
-                    onChange={handleChange}
-                    placeholder="Describe your model..."
-                  />
-                </div>
-
-                {/* Submit */}
-                <div className="d-grid">
-                  <button
-                    type="submit"
-                    className="btn btn-primary btn-lg"
-                  >
-                    + Add Model
-                  </button>
-                </div>
-
-              </form>
-
+            <div>
+              <h2>Model Information</h2>
+              <p>
+                Basic information about your model.
+              </p>
             </div>
           </div>
 
-        </div>
-      </div>
+          <div className="form-grid">
 
-    </div>
+            <div className="form-field form-field-wide">
+              <label>
+                Model Name
+                <span>*</span>
+              </label>
+
+              <input
+                type="text"
+                name="name"
+                value={model.name}
+                onChange={handleChange}
+                placeholder="e.g. ResNet50"
+              />
+            </div>
+
+            <div className="form-field">
+              <label>
+                Dataset
+                <span>*</span>
+              </label>
+
+              <input
+                type="text"
+                name="dataset"
+                value={model.dataset}
+                onChange={handleChange}
+                placeholder="e.g. HAM10000"
+              />
+            </div>
+
+            <div className="form-field">
+              <label>
+                Framework
+                <span>*</span>
+              </label>
+
+              <select
+                name="framework"
+                value={model.framework}
+                onChange={handleChange}
+              >
+                <option value="">
+                  Select framework
+                </option>
+
+                <option value="PyTorch">
+                  PyTorch
+                </option>
+
+                <option value="TensorFlow">
+                  TensorFlow
+                </option>
+
+                <option value="Keras">
+                  Keras
+                </option>
+
+                <option value="Scikit-learn">
+                  Scikit-learn
+                </option>
+              </select>
+            </div>
+
+          </div>
+
+        </section>
+
+        {/* Performance */}
+
+        <section className="form-section">
+
+          <div className="form-section-heading">
+            <div className="form-section-number">
+              02
+            </div>
+
+            <div>
+              <h2>Performance Metrics</h2>
+              <p>
+                Record the model's training performance.
+              </p>
+            </div>
+          </div>
+
+          <div className="metric-form-grid">
+
+            <div className="metric-field">
+              <label>
+                Accuracy
+                <span>*</span>
+              </label>
+
+              <div className="metric-input">
+                <input
+                  type="number"
+                  step="0.01"
+                  name="accuracy"
+                  value={model.accuracy}
+                  onChange={handleChange}
+                  placeholder="88.72"
+                />
+
+                <span>%</span>
+              </div>
+            </div>
+
+            <div className="metric-field">
+              <label>
+                F1 Score
+                <span>*</span>
+              </label>
+
+              <input
+                type="number"
+                step="0.0001"
+                name="f1Score"
+                value={model.f1Score}
+                onChange={handleChange}
+                placeholder="0.8845"
+              />
+            </div>
+
+            <div className="metric-field">
+              <label>
+                Epochs
+                <span>*</span>
+              </label>
+
+              <input
+                type="number"
+                name="epochs"
+                value={model.epochs}
+                onChange={handleChange}
+                placeholder="30"
+              />
+            </div>
+
+          </div>
+
+        </section>
+
+        {/* Additional Information */}
+
+        <section className="form-section">
+
+          <div className="form-section-heading">
+            <div className="form-section-number">
+              03
+            </div>
+
+            <div>
+              <h2>Additional Information</h2>
+              <p>
+                Add status and optional notes.
+              </p>
+            </div>
+          </div>
+
+          <div className="form-grid">
+
+            <div className="form-field">
+              <label>
+                Status
+                <span>*</span>
+              </label>
+
+              <select
+                name="status"
+                value={model.status}
+                onChange={handleChange}
+              >
+                <option value="">
+                  Select status
+                </option>
+
+                <option value="Completed">
+                  Completed
+                </option>
+
+                <option value="In Progress">
+                  In Progress
+                </option>
+
+                <option value="Planned">
+                  Planned
+                </option>
+              </select>
+            </div>
+
+            <div className="form-field form-field-wide">
+              <label>
+                Description
+              </label>
+
+              <textarea
+                name="description"
+                value={model.description}
+                onChange={handleChange}
+                rows="4"
+                placeholder="Add notes about the model, training process or experiment..."
+              />
+            </div>
+
+          </div>
+
+        </section>
+
+        {/* Actions */}
+
+        <div className="form-actions">
+
+          <p>
+            <span>*</span> Required fields
+          </p>
+
+          <button
+            type="submit"
+            className="primary-form-button"
+          >
+            <span>+</span>
+            Add Model
+          </button>
+
+        </div>
+
+      </form>
+
+    </main>
   )
 }
 

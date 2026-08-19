@@ -58,24 +58,57 @@ function Models() {
   }
 
   return (
-    <div className="container mt-5">
-      <h1 className="mb-4">My AI Models</h1>
+    <main className="models-page">
 
-      <div className="row">
-        {models.length === 0 ? (
-          <p>No models found.</p>
-        ) : (
-          models.map((model) => (
+      <section className="models-header">
+        <div>
+          <span className="page-eyebrow">
+            MODEL WORKSPACE
+          </span>
+
+          <h1>My AI Models</h1>
+
+          <p>
+            Manage and monitor your machine learning
+            models in one place.
+          </p>
+        </div>
+
+        <div className="models-summary">
+          <strong>{models.length}</strong>
+          <span>Total Models</span>
+        </div>
+      </section>
+
+      {models.length === 0 ? (
+        <section className="models-empty">
+          <div className="models-empty-icon">
+            +
+          </div>
+
+          <h2>No models yet</h2>
+
+          <p>
+            Your AI models will appear here after
+            you add them.
+          </p>
+        </section>
+      ) : (
+        <section className="models-grid">
+
+          {models.map((model) => (
             <ModelCard
               key={model.id}
               model={model}
               onDelete={handleDelete}
               onEdit={handleEdit}
             />
-          ))
-        )}
-      </div>
-    </div>
+          ))}
+
+        </section>
+      )}
+
+    </main>
   )
 }
 

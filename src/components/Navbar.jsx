@@ -1,43 +1,64 @@
-import { Link } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 
 function Navbar() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
-      <div className="container">
+    <nav className="app-navbar">
 
+      <div className="navbar-container">
+
+        {/* Logo */}
         <Link
-          className="navbar-brand fw-bold"
           to="/"
+          className="navbar-brand"
         >
-          🤖 AI Model Manager
+          <div className="brand-mark">
+            AI
+          </div>
+
+          <div className="brand-text">
+            <strong>AI Model</strong>
+            <span>Manager</span>
+          </div>
         </Link>
 
-        <div className="navbar-nav ms-auto align-items-center">
+        {/* Navigation */}
+        <div className="navbar-links">
 
-          <Link
-            className="nav-link px-3"
+          <NavLink
             to="/"
+            end
+            className={({ isActive }) =>
+              `navbar-link ${
+                isActive ? 'active' : ''
+              }`
+            }
           >
             Dashboard
-          </Link>
+          </NavLink>
 
-          <Link
-            className="nav-link px-3"
+          <NavLink
             to="/models"
+            className={({ isActive }) =>
+              `navbar-link ${
+                isActive ? 'active' : ''
+              }`
+            }
           >
             Models
-          </Link>
+          </NavLink>
 
           <Link
-            className="btn btn-primary ms-2"
             to="/add-model"
+            className="navbar-add-button"
           >
-            + Add Model
+            <span>+</span>
+            Add Model
           </Link>
 
         </div>
 
       </div>
+
     </nav>
   )
 }
