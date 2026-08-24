@@ -121,7 +121,7 @@ This means that model data is stored locally in the user's browser and does not 
 
 ### AI Models
 
-![AI Model Manager Models](./public/screenshots/models.png)
+![AI Model Manager Models](./public/screenshots/Models.png)
 
 ### Add Model
 
