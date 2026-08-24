@@ -121,8 +121,7 @@ Screenshots of the application will be added here.
 
 The application is deployed and available online:
 
-**Netlify URL will be added here.**
-
+[AI Model Manager - Live Demo](https://stately-sable-aef216.netlify.app)
 ## Project Purpose
 
 This project was developed as part of a web development and artificial intelligence training program.
