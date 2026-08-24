@@ -115,7 +115,17 @@ This means that model data is stored locally in the user's browser and does not 
 
 ## Screenshots
 
-Screenshots of the application will be added here.
+### Dashboard
+
+![AI Model Manager Dashboard](./public/screenshots/dashboard.png)
+
+### AI Models
+
+![AI Model Manager Models](./public/screenshots/models.png)
+
+### Add Model
+
+![AI Model Manager Models](./public/screenshots/AddModel.png)
 
 ## Live Demo
 
